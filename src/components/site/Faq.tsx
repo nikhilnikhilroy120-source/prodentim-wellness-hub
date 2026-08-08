@@ -46,7 +46,7 @@ export function Faq() {
               />
             </Accordion.Trigger>
           </Accordion.Header>
-          <Accordion.Content className="overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
+          <Accordion.Content className="accordion-content">
             <p className="px-5 pb-6 text-sm leading-relaxed text-muted-foreground sm:px-7">
               {item.a}
             </p>
