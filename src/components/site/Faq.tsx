@@ -35,10 +35,10 @@ export function Faq() {
         <Accordion.Item
           key={item.q}
           value={`item-${i}`}
-          className="overflow-hidden rounded-2xl border border-border bg-white"
+          className="surface-card overflow-hidden rounded-2xl transition-shadow duration-300 data-[state=open]:shadow-[0_28px_60px_-46px_oklch(0.28_0.062_152/0.9)]"
         >
           <Accordion.Header>
-            <Accordion.Trigger className="group flex w-full items-center justify-between gap-4 px-5 py-5 text-left text-base font-medium text-charcoal transition-colors hover:bg-sage/40 sm:px-7">
+            <Accordion.Trigger className="group flex w-full items-center justify-between gap-4 px-5 py-6 text-left text-base font-medium text-charcoal transition-colors hover:bg-sage/40 data-[state=open]:text-leaf sm:px-7">
               <span className="min-w-0">{item.q}</span>
               <ChevronDown
                 size={18}
