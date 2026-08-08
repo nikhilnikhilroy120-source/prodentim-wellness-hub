@@ -40,7 +40,7 @@ export function VideoCard({
   const thumb = url ? thumbFor(url) : null;
 
   return (
-    <article className="overflow-hidden rounded-3xl border border-border bg-white shadow-[0_18px_50px_-40px_black]">
+    <article className="overflow-hidden surface-card rounded-3xl">
       <div className="relative aspect-video w-full bg-sage/70">
         {playing && url ? (
           <iframe
