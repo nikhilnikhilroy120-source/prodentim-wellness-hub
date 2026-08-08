@@ -209,3 +209,33 @@
     transform: none;
   }
 }
+
+@keyframes acc-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes acc-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+@utility accordion-content {
+  overflow: hidden;
+
+  &[data-state="open"] {
+    animation: acc-down 320ms ease-out;
+  }
+
+  &[data-state="closed"] {
+    animation: acc-up 280ms ease-in;
+  }
+}
