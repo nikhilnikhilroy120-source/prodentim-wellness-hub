@@ -12,7 +12,14 @@ import {
 
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
-import { AnchorButton, BuyButton, Eyebrow, Reveal, Section } from "@/components/site/ui";
+import {
+  AnchorButton,
+  Botanical,
+  BuyButton,
+  Eyebrow,
+  Reveal,
+  Section,
+} from "@/components/site/ui";
 import { Faq } from "@/components/site/Faq";
 import { REVIEW_VIDEOS, VideoCard } from "@/components/site/ReviewVideos";
 import {
@@ -67,10 +74,15 @@ function Index() {
       <Header />
       <main>
         {/* 02. HERO */}
-        <section className="relative overflow-hidden bg-gradient-to-b from-sage/50 via-ivory to-ivory">
+        <section className="relative overflow-hidden bg-gradient-to-b from-sage/65 via-ivory to-cream organic-grain">
+          <Botanical className="opacity-[0.18]" />
           <div
             aria-hidden
-            className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-sage/50 blur-3xl"
+            className="pointer-events-none absolute -right-32 -top-40 h-[34rem] w-[34rem] rounded-full bg-[radial-gradient(closest-side,oklch(0.98_0.03_110/0.9),transparent)] blur-2xl"
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -left-40 bottom-0 h-96 w-96 rounded-full bg-sage/60 blur-3xl"
           />
           <div className="container-x grid items-center gap-12 py-16 sm:py-24 lg:grid-cols-2 lg:gap-8">
             <div className="order-2 lg:order-1">
@@ -92,7 +104,11 @@ function Index() {
               </p>
             </div>
 
-            <div className="order-1 lg:order-2">
+            <div className="relative order-1 product-ground lg:order-2">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 -z-10 m-auto h-[70%] w-[70%] rounded-full bg-[radial-gradient(closest-side,oklch(1_0_0/0.85),transparent)] blur-2xl"
+              />
               <img
                 src={heroBottles.url}
                 alt="Three ProDentim Advanced Oral Probiotics bottles, 30 soft tablets each"
@@ -100,14 +116,14 @@ function Index() {
                 height={950}
                 fetchPriority="high"
                 decoding="async"
-                className="mx-auto w-full max-w-[540px] drop-shadow-[0_40px_60px_rgba(40,60,40,0.18)]"
+                className="mx-auto w-full max-w-[540px] drop-shadow-[0_44px_46px_rgba(40,60,40,0.28)]"
               />
             </div>
           </div>
         </section>
 
         {/* 03. TRUST STRIP */}
-        <div className="border-y border-border bg-white">
+        <div className="border-y border-border bg-gradient-to-b from-white to-ivory">
           <div className="container-x grid grid-cols-2 gap-x-6 gap-y-5 py-8 sm:grid-cols-3 lg:grid-cols-6">
             {TRUST_ITEMS.map((item, i) => {
               const Icon = trustIcons[i % trustIcons.length]!;
@@ -227,7 +243,7 @@ function Index() {
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {INGREDIENTS.map((ing, i) => (
               <Reveal key={ing.name} delay={i * 100}>
-                <article className="h-full rounded-3xl border border-border bg-white p-8 transition-transform duration-300 hover:-translate-y-1">
+                <article className="surface-card h-full rounded-3xl p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_30px_60px_-42px_oklch(0.28_0.062_152/0.75)]">
                   <span className="grid h-11 w-11 place-items-center rounded-full bg-sage text-leaf">
                     <Leaf size={18} />
                   </span>
@@ -257,7 +273,7 @@ function Index() {
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {BLEND.map((b, i) => (
               <Reveal key={b.name} delay={i * 80}>
-                <article className="h-full rounded-3xl border border-border bg-white p-7">
+                <article className="surface-card h-full rounded-3xl p-7 transition-all duration-300 hover:-translate-y-1">
                   <span className="text-xs font-semibold tracking-[0.18em] text-sage-deep">
                     0{i + 1}
                   </span>
@@ -282,7 +298,7 @@ function Index() {
               const Icon = benefitIcons[i % benefitIcons.length]!;
               return (
                 <Reveal key={b.title} delay={i * 70}>
-                  <article className="h-full rounded-3xl border border-border bg-ivory p-8 transition-transform duration-300 hover:-translate-y-1">
+                  <article className="surface-card h-full rounded-3xl p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_30px_60px_-42px_oklch(0.28_0.062_152/0.75)]">
                     <Icon size={22} className="text-leaf" />
                     <h3 className="mt-4 text-lg text-charcoal">{b.title}</h3>
                     <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{b.text}</p>
@@ -347,7 +363,7 @@ function Index() {
               },
             ].map((b, i) => (
               <Reveal key={b.n} delay={i * 80}>
-                <article className="grid items-center gap-8 rounded-[2rem] border border-border bg-white p-6 shadow-[0_24px_60px_-55px_black] sm:p-9 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+                <article className="surface-card grid items-center gap-8 rounded-[2rem] p-6 sm:p-9 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
                   <img
                     src={b.img}
                     alt={b.alt}
@@ -355,7 +371,7 @@ function Index() {
                     height={666}
                     loading="lazy"
                     decoding="async"
-                    className="w-full rounded-2xl bg-cream object-contain"
+                    className="w-full rounded-2xl bg-gradient-to-b from-cream to-sage/40 object-contain"
                   />
                   <div>
                     <span className="eyebrow">Bonus #{b.n}</span>
@@ -396,7 +412,7 @@ function Index() {
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {TESTIMONIALS.map((t, i) => (
               <Reveal key={t.name} delay={i * 90}>
-                <figure className="h-full rounded-3xl border border-border bg-white p-8">
+                <figure className="surface-card h-full rounded-3xl p-8">
                   <div className="flex gap-1 text-gold" aria-label="5 out of 5 stars">
                     {Array.from({ length: 5 }).map((_, s) => (
                       <Star key={s} size={15} fill="currentColor" />
@@ -443,7 +459,7 @@ function Index() {
           <div className="mt-14 grid items-stretch gap-6 lg:grid-cols-3">
             {/* Basic */}
             <Reveal className="lg:order-1 lg:pt-8">
-              <article className="flex h-full flex-col rounded-[2rem] border border-border bg-white p-8 text-center">
+              <article className="surface-card flex h-full flex-col rounded-[2rem] p-8 text-center">
                 <p className="eyebrow">Basic</p>
                 <h3 className="mt-2 text-2xl text-charcoal">2 Bottles</h3>
                 <p className="text-sm text-muted-foreground">60 Day Supply</p>
@@ -469,7 +485,7 @@ function Index() {
 
             {/* Best value */}
             <Reveal className="lg:order-2" delay={80}>
-              <article className="relative flex h-full flex-col rounded-[2rem] border-2 border-leaf bg-white p-8 text-center shadow-[0_35px_80px_-55px_black]">
+              <article className="relative flex h-full flex-col rounded-[2rem] border-2 border-leaf/70 bg-gradient-to-b from-white to-sage/25 p-8 text-center shadow-[0_45px_90px_-55px_oklch(0.28_0.062_152/0.95)]">
                 <span className="absolute -top-4 left-1/2 -translate-x-1/2 rounded-full bg-leaf px-5 py-2 text-[0.68rem] font-bold uppercase tracking-widest text-primary-foreground">
                   Best Value!
                 </span>
@@ -501,7 +517,7 @@ function Index() {
 
             {/* Most popular */}
             <Reveal className="lg:order-3 lg:pt-8" delay={160}>
-              <article className="flex h-full flex-col rounded-[2rem] border border-border bg-white p-8 text-center">
+              <article className="surface-card flex h-full flex-col rounded-[2rem] p-8 text-center">
                 <p className="eyebrow">Most Popular</p>
                 <h3 className="mt-2 text-2xl text-charcoal">2 + 1 Bottles</h3>
                 <p className="text-sm text-muted-foreground">90 Day Supply</p>
@@ -531,7 +547,7 @@ function Index() {
 
         {/* 17. GUARANTEE */}
         <Section tone="ivory">
-          <div className="grid items-center gap-10 rounded-[2.5rem] border border-border bg-white p-8 sm:p-14 lg:grid-cols-[auto_minmax(0,1fr)]">
+          <div className="surface-card grid items-center gap-10 rounded-[2.5rem] p-8 sm:p-14 lg:grid-cols-[auto_minmax(0,1fr)]">
             <div className="mx-auto grid h-40 w-40 shrink-0 place-items-center rounded-full border-4 border-dashed border-leaf/40 bg-sage text-center">
               <div>
                 <p className="font-display text-4xl leading-none text-leaf">60</p>
@@ -582,9 +598,10 @@ function Index() {
         </Section>
 
         {/* 20. FINAL CTA */}
-        <section className="bg-leaf text-primary-foreground">
+        <section className="relative overflow-hidden bg-gradient-to-br from-leaf via-leaf to-leaf-deep text-primary-foreground">
+          <Botanical className="text-white opacity-[0.08]" />
           <div className="container-x grid items-center gap-10 py-20 sm:py-24 lg:grid-cols-2">
-            <div>
+            <div className="relative">
               <p className="eyebrow text-primary-foreground/70">Ready When You Are</p>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl">
                 Discover A New Approach To Everyday Oral Wellness
@@ -616,7 +633,7 @@ function Index() {
               height={950}
               loading="lazy"
               decoding="async"
-              className="mx-auto w-full max-w-md drop-shadow-[0_40px_60px_rgba(0,0,0,0.25)]"
+              className="relative mx-auto w-full max-w-md drop-shadow-[0_44px_50px_rgba(0,0,0,0.38)]"
             />
           </div>
         </section>
