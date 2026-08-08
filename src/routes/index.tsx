@@ -56,8 +56,10 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const trustIcons = [Leaf, Clock, ShieldCheck, Sparkles, Check, Droplets];
-const benefitIcons = [Sparkles, Wind, Droplets, Leaf, Clock, ShieldCheck];
+import type { LucideIcon } from "lucide-react";
+
+const trustIcons: LucideIcon[] = [Leaf, Clock, ShieldCheck, Sparkles, Check, Droplets];
+const benefitIcons: LucideIcon[] = [Sparkles, Wind, Droplets, Leaf, Clock, ShieldCheck];
 
 function Index() {
   return (
@@ -108,7 +110,7 @@ function Index() {
         <div className="border-y border-border bg-white">
           <div className="container-x grid grid-cols-2 gap-x-6 gap-y-5 py-8 sm:grid-cols-3 lg:grid-cols-6">
             {TRUST_ITEMS.map((item, i) => {
-              const Icon = trustIcons[i % trustIcons.length];
+              const Icon = trustIcons[i % trustIcons.length]!;
               return (
                 <div key={item} className="flex min-w-0 items-center gap-2.5">
                   <Icon size={18} className="shrink-0 text-leaf" />
@@ -277,7 +279,7 @@ function Index() {
           </Reveal>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {BENEFITS.map((b, i) => {
-              const Icon = benefitIcons[i % benefitIcons.length];
+              const Icon = benefitIcons[i % benefitIcons.length]!;
               return (
                 <Reveal key={b.title} delay={i * 70}>
                   <article className="h-full rounded-3xl border border-border bg-ivory p-8 transition-transform duration-300 hover:-translate-y-1">
