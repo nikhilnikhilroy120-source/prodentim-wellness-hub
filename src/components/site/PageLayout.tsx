@@ -13,10 +13,10 @@ export function LegalPage({
   children: ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-ivory">
+    <div className="min-h-screen bg-ivory light-wash">
       <Header />
       <main>
-        <div className="border-b border-border bg-cream">
+        <div className="border-b border-border bg-gradient-to-b from-sage/50 to-cream">
           <div className="container-x py-14 sm:py-20">
             <Link to="/" className="text-sm font-medium text-leaf hover:underline">
               ← Back to ProDentim

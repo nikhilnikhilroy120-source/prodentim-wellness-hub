@@ -225,7 +225,7 @@ function Index() {
               { k: "30", v: "Soft tablets per bottle" },
             ].map((s, i) => (
               <Reveal key={s.k} delay={i * 100}>
-                <div className="rounded-3xl border border-border bg-ivory p-8 text-center">
+                <div className="surface-card rounded-3xl p-8 text-center">
                   <p className="font-display text-4xl text-leaf">{s.k}</p>
                   <p className="mt-2 text-sm text-muted-foreground">{s.v}</p>
                 </div>
@@ -585,7 +585,7 @@ function Index() {
 
         {/* 19. SCIENTIFIC REFERENCES */}
         <Section tone="white">
-          <details className="mx-auto max-w-3xl rounded-3xl border border-border bg-ivory p-6 sm:p-8">
+          <details className="mx-auto max-w-3xl surface-card rounded-3xl p-6 sm:p-8">
             <summary className="cursor-pointer list-none text-lg font-semibold text-charcoal">
               Scientific References
             </summary>
