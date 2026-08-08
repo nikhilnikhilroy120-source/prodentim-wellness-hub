@@ -75,16 +75,17 @@
 
 :root {
   --radius: 0.625rem;
-  --ivory: oklch(0.985 0.008 95);
-  --cream: oklch(0.968 0.014 92);
-  --sage: oklch(0.945 0.021 150);
+  --ivory: oklch(0.979 0.012 92);
+  --cream: oklch(0.958 0.019 90);
+  --sage: oklch(0.938 0.026 148);
   --sage-deep: oklch(0.62 0.075 152);
-  --leaf: oklch(0.42 0.096 150);
+  --leaf: oklch(0.40 0.098 150);
+  --leaf-deep: oklch(0.28 0.062 152);
   --charcoal: oklch(0.25 0.012 150);
   --gold: oklch(0.75 0.115 82);
-  --background: oklch(0.99 0.005 95);
+  --background: oklch(0.979 0.012 92);
   --foreground: oklch(0.25 0.012 150);
-  --card: oklch(1 0 0);
+  --card: oklch(0.997 0.004 95);
   --card-foreground: oklch(0.25 0.012 150);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.25 0.012 150);
@@ -98,8 +99,8 @@
   --accent-foreground: oklch(0.32 0.05 150);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.905 0.014 120);
-  --input: oklch(0.905 0.014 120);
+  --border: oklch(0.898 0.018 130);
+  --input: oklch(0.898 0.018 130);
   --ring: oklch(0.62 0.075 152);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
