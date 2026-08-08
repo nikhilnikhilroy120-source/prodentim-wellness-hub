@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DisclaimerRouteImport } from './routes/disclaimer'
 import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as ShippingPolicyRouteImport } from './routes/shipping-policy'
 import { Route as TermsRouteImport } from './routes/terms'
 
 const IndexRoute = IndexRouteImport.update({
@@ -29,6 +30,11 @@ const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
   path: '/privacy-policy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ShippingPolicyRoute = ShippingPolicyRouteImport.update({
+  id: '/shipping-policy',
+  path: '/shipping-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
@@ -39,12 +45,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/disclaimer': typeof DisclaimerRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/shipping-policy': typeof ShippingPolicyRoute
   '/terms': typeof TermsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/disclaimer': typeof DisclaimerRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/shipping-policy': typeof ShippingPolicyRoute
   '/terms': typeof TermsRoute
 }
 export interface FileRoutesById {
@@ -52,20 +60,29 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/disclaimer': typeof DisclaimerRoute
   '/privacy-policy': typeof PrivacyPolicyRoute
+  '/shipping-policy': typeof ShippingPolicyRoute
   '/terms': typeof TermsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/disclaimer' | '/privacy-policy' | '/terms'
+  fullPaths:
+    '/' | '/disclaimer' | '/privacy-policy' | '/shipping-policy' | '/terms'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/disclaimer' | '/privacy-policy' | '/terms'
-  id: '__root__' | '/' | '/disclaimer' | '/privacy-policy' | '/terms'
+  to: '/' | '/disclaimer' | '/privacy-policy' | '/shipping-policy' | '/terms'
+  id:
+    | '__root__'
+    | '/'
+    | '/disclaimer'
+    | '/privacy-policy'
+    | '/shipping-policy'
+    | '/terms'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DisclaimerRoute: typeof DisclaimerRoute
   PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  ShippingPolicyRoute: typeof ShippingPolicyRoute
   TermsRoute: typeof TermsRoute
 }
 
@@ -92,6 +109,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PrivacyPolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/shipping-policy': {
+      id: '/shipping-policy'
+      path: '/shipping-policy'
+      fullPath: '/shipping-policy'
+      preLoaderRoute: typeof ShippingPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/terms': {
       id: '/terms'
       path: '/terms'
@@ -106,6 +130,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DisclaimerRoute: DisclaimerRoute,
   PrivacyPolicyRoute: PrivacyPolicyRoute,
+  ShippingPolicyRoute: ShippingPolicyRoute,
   TermsRoute: TermsRoute,
 }
 export const routeTree = rootRouteImport
