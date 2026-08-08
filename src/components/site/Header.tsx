@@ -20,7 +20,9 @@ export function Header() {
     <header
       className={cn(
         "sticky top-0 z-50 border-b border-border/60 backdrop-blur-md transition-all duration-300",
-        scrolled ? "bg-ivory/90 py-2 shadow-[0_1px_20px_-16px_black]" : "bg-ivory/70 py-4",
+        scrolled
+          ? "bg-ivory/85 py-2 shadow-[0_10px_30px_-26px_oklch(0.28_0.062_152/0.9)]"
+          : "bg-ivory/60 py-4",
       )}
     >
       <div className="container-x grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 lg:flex lg:justify-between">
