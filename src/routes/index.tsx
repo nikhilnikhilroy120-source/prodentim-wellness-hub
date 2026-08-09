@@ -17,6 +17,7 @@ import {
   Botanical,
   BuyButton,
   Eyebrow,
+  LeafEdge,
   Reveal,
   Section,
 } from "@/components/site/ui";
@@ -39,6 +40,7 @@ import reviewsCollage from "@/assets/reviews.png.asset.json";
 import bonus1 from "@/assets/bonus1.png.asset.json";
 import bonus2 from "@/assets/bonus2.png.asset.json";
 import bonus3 from "@/assets/bonus3.png.asset.json";
+import microbiome from "@/assets/microbiome.jpg";
 
 const TITLE = "ProDentim | Advanced Oral Probiotics for Everyday Oral Wellness";
 const DESCRIPTION =
@@ -74,8 +76,9 @@ function Index() {
       <Header />
       <main>
         {/* 02. HERO */}
-        <section className="relative overflow-hidden bg-gradient-to-b from-sage/65 via-ivory to-cream organic-grain">
-          <Botanical className="opacity-[0.18]" />
+        <section className="relative overflow-hidden bg-gradient-to-b from-sage via-cream to-ivory sun-wash organic-grain">
+          <Botanical className="opacity-[0.14]" />
+          <LeafEdge />
           <div
             aria-hidden
             className="pointer-events-none absolute -right-32 -top-40 h-[34rem] w-[34rem] rounded-full bg-[radial-gradient(closest-side,oklch(0.98_0.03_110/0.9),transparent)] blur-2xl"
@@ -84,11 +87,14 @@ function Index() {
             aria-hidden
             className="pointer-events-none absolute -left-40 bottom-0 h-96 w-96 rounded-full bg-sage/60 blur-3xl"
           />
-          <div className="container-x grid items-center gap-12 py-16 sm:py-24 lg:grid-cols-2 lg:gap-8">
+          <div className="container-x relative grid items-center gap-12 py-14 sm:py-20 lg:grid-cols-2 lg:gap-8">
             <div className="order-2 lg:order-1">
-              <Eyebrow>Brand New Probiotics</Eyebrow>
-              <h1 className="text-4xl leading-[1.08] text-charcoal sm:text-5xl lg:text-6xl">
-                Specially Designed For The Health Of Your Teeth And Gums
+              <p className="mb-5 inline-flex items-center gap-2 rounded-full bg-leaf-deep px-4 py-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.2em] text-primary-foreground">
+                • Advanced Oral Probiotics •
+              </p>
+              <h1 className="text-4xl leading-[1.08] text-charcoal sm:text-5xl lg:text-[3.4rem]">
+                Specially Designed For The{" "}
+                <span className="text-leaf">Health Of Your Teeth And Gums</span>
               </h1>
               <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
                 Try ProDentim: a unique blend of 3.5 billion probiotic strains and nutrients
@@ -98,7 +104,24 @@ function Index() {
                 <BuyButton>Get ProDentim</BuyButton>
                 <AnchorButton to="/#ingredients">Explore The Formula</AnchorButton>
               </div>
-              <p className="mt-6 flex items-center gap-2 text-sm text-muted-foreground">
+
+              <ul className="mt-9 grid grid-cols-3 gap-x-3 gap-y-6 sm:grid-cols-6">
+                {TRUST_ITEMS.map((item, i) => {
+                  const Icon = trustIcons[i % trustIcons.length]!;
+                  return (
+                    <li key={item} className="flex flex-col items-center gap-2 text-center">
+                      <span className="grid h-11 w-11 place-items-center rounded-full border border-leaf/25 bg-cream/80 text-leaf shadow-[0_10px_20px_-16px_rgba(14,63,36,0.9)]">
+                        <Icon size={18} />
+                      </span>
+                      <span className="text-[0.68rem] font-medium leading-tight text-charcoal">
+                        {item}
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
+
+              <p className="mt-8 flex items-center gap-2 text-sm text-muted-foreground">
                 <ShieldCheck size={16} className="text-leaf" />
                 60-Day Money-Back Guarantee
               </p>
@@ -107,7 +130,11 @@ function Index() {
             <div className="relative order-1 product-ground lg:order-2">
               <div
                 aria-hidden
-                className="pointer-events-none absolute inset-0 -z-10 m-auto h-[70%] w-[70%] rounded-full bg-[radial-gradient(closest-side,oklch(1_0_0/0.85),transparent)] blur-2xl"
+                className="pointer-events-none absolute inset-0 -z-10 m-auto h-[78%] w-[78%] rounded-full bg-[radial-gradient(closest-side,rgba(255,253,240,0.95),transparent)] blur-2xl"
+              />
+              <div
+                aria-hidden
+                className="pointer-events-none absolute inset-x-[8%] bottom-[3%] -z-10 h-24 rounded-[50%] bg-[radial-gradient(closest-side,rgba(24,32,24,0.28),transparent)] blur-xl"
               />
               <img
                 src={heroBottles.url}
@@ -122,36 +149,22 @@ function Index() {
           </div>
         </section>
 
-        {/* 03. TRUST STRIP */}
-        <div className="border-y border-border bg-gradient-to-b from-white to-ivory">
-          <div className="container-x grid grid-cols-2 gap-x-6 gap-y-5 py-8 sm:grid-cols-3 lg:grid-cols-6">
-            {TRUST_ITEMS.map((item, i) => {
-              const Icon = trustIcons[i % trustIcons.length]!;
-              return (
-                <div key={item} className="flex min-w-0 items-center gap-2.5">
-                  <Icon size={18} className="shrink-0 text-leaf" />
-                  <span className="text-sm font-medium text-charcoal">{item}</span>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-
         {/* 04. SCIENTIFIC DISCOVERY */}
-        <Section id="about" tone="ivory">
-          <Reveal className="mx-auto max-w-3xl text-center">
+        <Section id="about" tone="cream">
+          <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
+          <Reveal>
             <Eyebrow>May 2022 — New Scientific Discovery</Eyebrow>
-            <h2 className="text-3xl text-charcoal sm:text-4xl lg:text-5xl">
+            <h2 className="text-3xl text-charcoal sm:text-4xl">
               Your Mouth Has Its Own Microbiome
             </h2>
-            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+            <p className="mt-6 text-base leading-relaxed text-muted-foreground">
               “A recent study put out in the Springer Nature publication found that people who
               have good teeth have a high population of good bacteria in the mouth.”
             </p>
-            <p className="mt-5 inline-block rounded-full bg-sage px-5 py-2 text-sm font-medium text-leaf">
+            <p className="mt-5 inline-block rounded-full bg-sage px-5 py-2 text-sm font-semibold text-leaf">
               (Hint – No Toothpaste or Mouthwash Involved)
             </p>
-            <p className="mt-8 text-base leading-relaxed text-muted-foreground">
+            <p className="mt-6 text-base leading-relaxed text-muted-foreground">
               What that research points to is simple: the balance of bacteria living in your
               mouth matters. Many everyday oral care products are not designed with that
               balance in mind. ProDentim was built around it — a probiotic-focused approach to
@@ -161,17 +174,37 @@ function Index() {
               href={SCIENTIFIC_REFERENCE_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-6 inline-block text-sm font-semibold text-leaf underline underline-offset-4"
+              className="mt-7 inline-flex items-center gap-2 rounded-full border border-leaf/35 bg-cream px-5 py-2.5 text-xs font-semibold uppercase tracking-widest text-leaf transition-colors hover:bg-sage"
             >
               Reference link
             </a>
           </Reveal>
+          <Reveal delay={120} className="relative">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 m-auto h-[85%] w-[85%] rounded-full bg-[radial-gradient(closest-side,rgba(21,91,50,0.22),transparent)] blur-2xl"
+            />
+            <img
+              src={microbiome}
+              alt="Microscopic view of beneficial rod-shaped oral bacteria"
+              width={1024}
+              height={1024}
+              loading="lazy"
+              decoding="async"
+              className="media-orb relative mx-auto aspect-square w-full max-w-sm object-cover"
+            />
+          </Reveal>
+          </div>
         </Section>
 
         {/* 05. WHY PRODENTIM */}
-        <Section tone="cream">
+        <Section tone="sage">
           <div className="grid items-center gap-12 lg:grid-cols-2">
-            <Reveal>
+            <Reveal className="relative">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -inset-6 -z-10 rounded-[3rem] bg-[radial-gradient(closest-side,rgba(255,255,255,0.9),transparent)] blur-2xl"
+              />
               <img
                 src={editorial.url}
                 alt="ProDentim Advanced Oral Probiotics bottle with strawberries, mint leaves and greenery"
@@ -179,12 +212,12 @@ function Index() {
                 height={1536}
                 loading="lazy"
                 decoding="async"
-                className="w-full rounded-3xl border border-border object-cover shadow-[0_30px_70px_-50px_black]"
+                className="w-full rounded-[2rem] border border-leaf/15 object-cover shadow-[0_50px_90px_-60px_rgba(14,63,36,0.95)]"
               />
             </Reveal>
             <Reveal delay={120}>
               <Eyebrow>A Different Approach To Oral Wellness</Eyebrow>
-              <h2 className="text-3xl text-charcoal sm:text-4xl">
+              <h2 className="text-3xl text-leaf sm:text-4xl">
                 That’s Why We Created ProDentim
               </h2>
               <p className="mt-6 text-base leading-relaxed text-muted-foreground">
@@ -199,6 +232,20 @@ function Index() {
               <p className="mt-4 text-base leading-relaxed text-muted-foreground">
                 Every ProDentim you chew will support the good health of your gums and teeth.
               </p>
+              <div className="mt-7 flex items-start gap-4 rounded-2xl border border-leaf/20 bg-cream/80 p-5">
+                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-sage text-leaf">
+                  <Sparkles size={20} />
+                </span>
+                <div>
+                  <p className="text-sm font-bold uppercase tracking-wider text-leaf">
+                    3.5 Billion Probiotic Strains
+                  </p>
+                  <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                    Along with 3 unique ingredients that are clinically proven to support the
+                    health of your teeth and gums.
+                  </p>
+                </div>
+              </div>
               <div className="mt-8">
                 <BuyButton>Get ProDentim</BuyButton>
               </div>
