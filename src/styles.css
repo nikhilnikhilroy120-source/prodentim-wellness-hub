@@ -10,6 +10,7 @@
   --color-ivory: var(--ivory);
   --color-cream: var(--cream);
   --color-sage: var(--sage);
+  --color-sage-mid: var(--sage-mid);
   --color-sage-deep: var(--sage-deep);
   --color-leaf: var(--leaf);
   --color-charcoal: var(--charcoal);
@@ -76,32 +77,33 @@
 
 :root {
   --radius: 0.625rem;
-  --ivory: oklch(0.979 0.012 92);
-  --cream: oklch(0.958 0.019 90);
-  --sage: oklch(0.938 0.026 148);
+  --ivory: #f7f5ea;
+  --cream: #fcfbf5;
+  --sage: #e8f1e5;
+  --sage-mid: #d7e6d0;
   --sage-deep: oklch(0.62 0.075 152);
-  --leaf: oklch(0.40 0.098 150);
-  --leaf-deep: oklch(0.28 0.062 152);
-  --charcoal: oklch(0.25 0.012 150);
+  --leaf: #155b32;
+  --leaf-deep: #0e3f24;
+  --charcoal: #182018;
   --gold: oklch(0.75 0.115 82);
-  --background: oklch(0.979 0.012 92);
-  --foreground: oklch(0.25 0.012 150);
-  --card: oklch(0.997 0.004 95);
-  --card-foreground: oklch(0.25 0.012 150);
+  --background: #f7f5ea;
+  --foreground: #182018;
+  --card: #fcfbf5;
+  --card-foreground: #182018;
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.25 0.012 150);
-  --primary: oklch(0.42 0.096 150);
+  --popover-foreground: #182018;
+  --primary: #155b32;
   --primary-foreground: oklch(0.985 0.008 95);
-  --secondary: oklch(0.945 0.021 150);
-  --secondary-foreground: oklch(0.32 0.05 150);
-  --muted: oklch(0.962 0.012 95);
-  --muted-foreground: oklch(0.52 0.02 150);
-  --accent: oklch(0.945 0.021 150);
-  --accent-foreground: oklch(0.32 0.05 150);
+  --secondary: #e8f1e5;
+  --secondary-foreground: #155b32;
+  --muted: #f2f0e4;
+  --muted-foreground: oklch(0.48 0.022 150);
+  --accent: #d7e6d0;
+  --accent-foreground: #155b32;
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.898 0.018 130);
-  --input: oklch(0.898 0.018 130);
+  --border: #dfe6d6;
+  --input: #dfe6d6;
   --ring: oklch(0.62 0.075 152);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
@@ -328,4 +330,32 @@
     black 94%,
     transparent 100%
   );
+}
+
+/* Warm natural sunlight gradient used behind the hero and final CTA. */
+@utility sun-wash {
+  background-image:
+    radial-gradient(80% 60% at 70% 0%, rgba(255, 250, 225, 0.95), transparent 65%),
+    radial-gradient(70% 60% at 8% 100%, rgba(215, 230, 208, 0.75), transparent 62%);
+}
+
+/* Thin elegant divider used between editorial blocks. */
+@utility hairline {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    color-mix(in oklab, var(--sage-deep) 35%, transparent),
+    transparent
+  );
+}
+
+/* Circular premium media frame (microbiome, ingredients). */
+@utility media-orb {
+  border-radius: 9999px;
+  overflow: hidden;
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--leaf) 18%, transparent),
+    0 0 0 10px color-mix(in oklab, var(--sage) 70%, transparent),
+    0 40px 70px -50px color-mix(in oklab, var(--leaf-deep) 90%, transparent);
 }

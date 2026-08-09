@@ -76,10 +76,10 @@ export function Section({
   className?: string;
 }) {
   const tones = {
-    ivory: "bg-ivory light-wash",
-    cream: "bg-cream light-wash",
-    sage: "bg-gradient-to-b from-sage/70 via-sage/40 to-ivory",
-    white: "bg-gradient-to-b from-white via-ivory/70 to-white",
+    ivory: "bg-gradient-to-b from-ivory via-cream to-ivory light-wash",
+    cream: "bg-gradient-to-b from-cream via-ivory to-sage/45 light-wash",
+    sage: "bg-gradient-to-b from-sage via-sage-mid/70 to-ivory",
+    white: "bg-gradient-to-b from-ivory via-cream to-sage/35",
     leaf: "bg-leaf text-primary-foreground",
   } as const;
   return (
@@ -92,6 +92,7 @@ export function Section({
       )}
     >
       <Botanical />
+      <LeafEdge />
       <div className="container-x relative">{children}</div>
     </section>
   );
@@ -119,6 +120,81 @@ export function Botanical({ className }: { className?: string }) {
         <path d="M120 620c-60-62-70-152-20-212 46-54 122-50 158 8 42 68 12 162-138 204z" opacity="0.35" />
       </g>
     </svg>
+  );
+}
+
+/**
+ * A single botanical leaf with a central vein — the building block for the
+ * foliage that frames every section edge.
+ */
+function Leaf({
+  x,
+  y,
+  rotate,
+  scale = 1,
+  opacity = 1,
+}: {
+  x: number;
+  y: number;
+  rotate: number;
+  scale?: number;
+  opacity?: number;
+}) {
+  return (
+    <g transform={`translate(${x} ${y}) rotate(${rotate}) scale(${scale})`} opacity={opacity}>
+      <path
+        d="M0 0C46 -34 108 -30 140 0C108 30 46 34 0 0Z"
+        fill="currentColor"
+      />
+      <path
+        d="M4 0H136"
+        stroke="var(--ivory)"
+        strokeWidth="1.6"
+        strokeOpacity="0.45"
+        fill="none"
+      />
+    </g>
+  );
+}
+
+function Branch({ className }: { className?: string }) {
+  return (
+    <svg
+      aria-hidden
+      viewBox="0 0 320 620"
+      className={cn("pointer-events-none absolute text-leaf", className)}
+    >
+      <path
+        d="M20 0C60 140 90 300 96 610"
+        stroke="currentColor"
+        strokeWidth="3"
+        fill="none"
+        opacity="0.5"
+      />
+      <Leaf x={40} y={70} rotate={-18} scale={0.85} opacity={0.85} />
+      <Leaf x={44} y={70} rotate={196} scale={0.6} opacity={0.6} />
+      <Leaf x={58} y={200} rotate={-4} scale={1} opacity={0.8} />
+      <Leaf x={62} y={210} rotate={182} scale={0.55} opacity={0.5} />
+      <Leaf x={78} y={340} rotate={14} scale={0.9} opacity={0.75} />
+      <Leaf x={86} y={470} rotate={-10} scale={0.7} opacity={0.6} />
+      <Leaf x={92} y={560} rotate={22} scale={0.55} opacity={0.5} />
+    </svg>
+  );
+}
+
+/**
+ * Layered foliage anchored to the left and right edges of a section. Two
+ * depth planes (blurred + crisp) so the leaves read as environment rather
+ * than stickers.
+ */
+export function LeafEdge({ className }: { className?: string }) {
+  return (
+    <div aria-hidden className={cn("pointer-events-none absolute inset-0", className)}>
+      <Branch className="-left-24 top-[-6%] h-[70%] opacity-[0.16] blur-[3px] sm:-left-16" />
+      <Branch className="-left-10 top-[8%] h-[42%] opacity-[0.10] blur-[1px]" />
+      <Branch className="-right-24 bottom-[-6%] h-[70%] -scale-x-100 opacity-[0.16] blur-[3px] sm:-right-16" />
+      <Branch className="-right-8 bottom-[6%] h-[38%] -scale-x-100 opacity-[0.10] blur-[1px]" />
+    </div>
   );
 }
 
