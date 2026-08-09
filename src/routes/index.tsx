@@ -282,20 +282,23 @@ function Index() {
         </Section>
 
         {/* 07. INGREDIENTS */}
-        <Section id="ingredients" tone="sage">
+        <Section id="ingredients" tone="ivory">
           <Reveal className="mx-auto max-w-2xl text-center">
             <Eyebrow>The Formula</Eyebrow>
-            <h2 className="text-3xl text-charcoal sm:text-4xl">Clinically Researched Strains</h2>
+            <h2 className="text-3xl text-leaf sm:text-4xl">
+              Inside Every ProDentim You’ll Find
+            </h2>
           </Reveal>
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
+          <div className="mt-12 grid divide-y divide-border md:grid-cols-3 md:divide-x md:divide-y-0">
             {INGREDIENTS.map((ing, i) => (
               <Reveal key={ing.name} delay={i * 100}>
-                <article className="surface-card h-full rounded-3xl p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_30px_60px_-42px_oklch(0.28_0.062_152/0.75)]">
-                  <span className="grid h-11 w-11 place-items-center rounded-full bg-sage text-leaf">
-                    <Leaf size={18} />
+                <article className="flex h-full gap-5 px-2 py-8 md:px-7">
+                  <span className="media-orb grid h-16 w-16 shrink-0 place-items-center bg-gradient-to-br from-sage to-sage-mid text-leaf">
+                    <Leaf size={24} />
                   </span>
-                  <h3 className="mt-5 text-xl text-charcoal">{ing.name}</h3>
-                  <ul className="mt-4 space-y-2.5">
+                  <div className="min-w-0">
+                  <h3 className="text-lg leading-snug text-charcoal">{ing.name}</h3>
+                  <ul className="mt-3 space-y-2.5">
                     {ing.points.map((p) => (
                       <li key={p} className="flex gap-2.5 text-sm leading-relaxed text-muted-foreground">
                         <Check size={16} className="mt-0.5 shrink-0 text-leaf" />
@@ -303,6 +306,7 @@ function Index() {
                       </li>
                     ))}
                   </ul>
+                  </div>
                 </article>
               </Reveal>
             ))}
@@ -593,18 +597,18 @@ function Index() {
         </Section>
 
         {/* 17. GUARANTEE */}
-        <Section tone="ivory">
-          <div className="surface-card grid items-center gap-10 rounded-[2.5rem] p-8 sm:p-14 lg:grid-cols-[auto_minmax(0,1fr)]">
-            <div className="mx-auto grid h-40 w-40 shrink-0 place-items-center rounded-full border-4 border-dashed border-leaf/40 bg-sage text-center">
+        <Section tone="cream">
+          <div className="grid items-center gap-10 lg:grid-cols-[auto_minmax(0,1fr)]">
+            <div className="relative mx-auto grid h-48 w-48 shrink-0 place-items-center rounded-full bg-gradient-to-br from-leaf to-leaf-deep text-center shadow-[0_40px_70px_-45px_rgba(14,63,36,0.95)] ring-8 ring-sage/70">
               <div>
-                <p className="font-display text-4xl leading-none text-leaf">60</p>
-                <p className="mt-1 px-3 text-[0.62rem] font-bold uppercase leading-tight tracking-widest text-leaf">
+                <p className="font-display text-6xl leading-none text-primary-foreground">60</p>
+                <p className="mt-1 px-4 text-[0.6rem] font-bold uppercase leading-tight tracking-[0.18em] text-primary-foreground/85">
                   Day Money-Back Guarantee
                 </p>
               </div>
             </div>
             <div>
-              <h2 className="text-3xl text-charcoal sm:text-4xl">
+              <h2 className="text-3xl text-leaf sm:text-4xl">
                 100% Satisfaction 60-Day Money Back Guarantee
               </h2>
               <p className="mt-5 text-base leading-relaxed text-muted-foreground">
@@ -645,33 +649,35 @@ function Index() {
         </Section>
 
         {/* 20. FINAL CTA */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-leaf via-leaf to-leaf-deep text-primary-foreground">
-          <Botanical className="text-white opacity-[0.08]" />
+        <section className="relative overflow-hidden bg-gradient-to-b from-ivory via-cream to-sage sun-wash organic-grain">
+          <Botanical className="opacity-[0.12]" />
+          <LeafEdge />
           <div className="container-x grid items-center gap-10 py-20 sm:py-24 lg:grid-cols-2">
             <div className="relative">
-              <p className="eyebrow text-primary-foreground/70">Ready When You Are</p>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl">
+              <p className="eyebrow">Ready When You Are</p>
+              <h2 className="text-3xl text-leaf sm:text-4xl lg:text-5xl">
                 Discover A New Approach To Everyday Oral Wellness
               </h2>
-              <p className="mt-6 max-w-xl text-base leading-relaxed text-primary-foreground/85">
+              <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground">
                 Explore ProDentim and its probiotic-focused formula designed to support the
                 health of your teeth and gums.
               </p>
               <div className="mt-9 flex flex-wrap gap-3">
-                <BuyButton className="bg-white text-leaf hover:bg-cream">
-                  Claim Your Discount
-                </BuyButton>
-                <AnchorButton
-                  to="/#ingredients"
-                  className="border-primary-foreground/40 text-primary-foreground hover:bg-white/10"
-                >
+                <BuyButton>Claim Your Discount</BuyButton>
+                <AnchorButton to="/#ingredients">
                   Explore The Formula
                 </AnchorButton>
               </div>
-              <p className="mt-6 flex items-center gap-2 text-sm text-primary-foreground/80">
-                <ShieldCheck size={16} />
-                60-Day Money-Back Guarantee
-              </p>
+              <div className="mt-7 flex flex-wrap gap-x-7 gap-y-3 text-sm text-muted-foreground">
+                <p className="flex items-center gap-2">
+                  <ShieldCheck size={16} className="text-leaf" />
+                  60-Day Money-Back Guarantee
+                </p>
+                <p className="flex items-center gap-2">
+                  <Check size={16} className="text-leaf" />
+                  Secure Checkout
+                </p>
+              </div>
             </div>
             <img
               src={heroBottles.url}
@@ -680,7 +686,7 @@ function Index() {
               height={950}
               loading="lazy"
               decoding="async"
-              className="relative mx-auto w-full max-w-md drop-shadow-[0_44px_50px_rgba(0,0,0,0.38)]"
+              className="relative mx-auto w-full max-w-md drop-shadow-[0_44px_50px_rgba(40,60,40,0.32)]"
             />
           </div>
         </section>

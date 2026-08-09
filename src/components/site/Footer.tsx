@@ -3,7 +3,7 @@ import { LEGAL_LINKS, NAV_LINKS } from "@/config/site";
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-gradient-to-b from-leaf-deep to-[oklch(0.22_0.05_152)] text-primary-foreground">
+    <footer className="relative overflow-hidden bg-gradient-to-b from-leaf to-leaf-deep text-primary-foreground">
       <div className="container-x grid gap-10 py-16 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
           <Link to="/" className="flex items-center gap-2">
