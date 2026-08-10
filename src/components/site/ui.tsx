@@ -109,7 +109,7 @@ export function Botanical({ className }: { className?: string }) {
       viewBox="0 0 1200 600"
       preserveAspectRatio="xMidYMid slice"
       className={cn(
-        "pointer-events-none absolute inset-0 h-full w-full text-sage-deep opacity-[0.13] blur-[2px]",
+        "pointer-events-none absolute inset-0 h-full w-full text-leaf-deep opacity-[0.16] blur-[2px]",
         className,
       )}
     >
@@ -226,10 +226,15 @@ function Branch({ className }: { className?: string }) {
 export function LeafEdge({ className }: { className?: string }) {
   return (
     <div aria-hidden className={cn("pointer-events-none absolute inset-0", className)}>
-      <Branch className="-left-24 top-[-6%] h-[70%] opacity-[0.16] blur-[3px] sm:-left-16" />
-      <Branch className="-left-10 top-[8%] h-[42%] opacity-[0.10] blur-[1px]" />
-      <Branch className="-right-24 bottom-[-6%] h-[70%] -scale-x-100 opacity-[0.16] blur-[3px] sm:-right-16" />
-      <Branch className="-right-8 bottom-[6%] h-[38%] -scale-x-100 opacity-[0.10] blur-[1px]" />
+      {/* far plane — soft, out of focus */}
+      <Branch className="-left-28 top-[-10%] h-[86%] opacity-[0.22] blur-[6px] sm:-left-20" />
+      <Branch className="-right-28 bottom-[-10%] h-[86%] -scale-x-100 opacity-[0.22] blur-[6px] sm:-right-20" />
+      {/* mid plane */}
+      <Branch className="-left-16 top-[4%] h-[58%] opacity-[0.3] blur-[2px]" />
+      <Branch className="-right-14 bottom-[2%] h-[54%] -scale-x-100 opacity-[0.3] blur-[2px]" />
+      {/* near plane — crisp foliage catching the light */}
+      <Branch className="-left-6 top-[16%] h-[34%] rotate-[8deg] opacity-[0.42] drop-shadow-[0_18px_24px_rgba(14,63,36,0.18)]" />
+      <Branch className="-right-4 bottom-[14%] h-[30%] -rotate-[8deg] -scale-x-100 opacity-[0.42] drop-shadow-[0_18px_24px_rgba(14,63,36,0.18)]" />
     </div>
   );
 }
