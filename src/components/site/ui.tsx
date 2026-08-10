@@ -109,7 +109,7 @@ export function Botanical({ className }: { className?: string }) {
       viewBox="0 0 1200 600"
       preserveAspectRatio="xMidYMid slice"
       className={cn(
-        "pointer-events-none absolute inset-0 h-full w-full text-sage-deep opacity-[0.13] blur-[2px]",
+        "pointer-events-none absolute inset-0 h-full w-full text-leaf-deep opacity-[0.16] blur-[2px]",
         className,
       )}
     >
@@ -124,8 +124,8 @@ export function Botanical({ className }: { className?: string }) {
 }
 
 /**
- * A single botanical leaf with a central vein — the building block for the
- * foliage that frames every section edge.
+ * A single botanical leaf: asymmetric pointed blade, curved midrib and
+ * lateral veins so it reads as a real leaf rather than a flat shape.
  */
 function Leaf({
   x,
@@ -133,26 +133,46 @@ function Leaf({
   rotate,
   scale = 1,
   opacity = 1,
+  fill = "url(#leafFill)",
 }: {
   x: number;
   y: number;
   rotate: number;
   scale?: number;
   opacity?: number;
+  fill?: string;
 }) {
   return (
     <g transform={`translate(${x} ${y}) rotate(${rotate}) scale(${scale})`} opacity={opacity}>
+      {/* blade — slight downward curve at the tip, wider near the base */}
       <path
-        d="M0 0C46 -34 108 -30 140 0C108 30 46 34 0 0Z"
-        fill="currentColor"
+        d="M0 2C34 -40 96 -50 152 -14C112 34 44 44 0 2Z"
+        fill={fill}
       />
+      {/* darker underside for depth */}
       <path
-        d="M4 0H136"
+        d="M0 2C40 26 106 26 152 -14C112 34 44 44 0 2Z"
+        fill="var(--leaf-deep)"
+        fillOpacity="0.28"
+      />
+      {/* midrib */}
+      <path
+        d="M2 2C50 -8 108 -12 152 -14"
         stroke="var(--ivory)"
-        strokeWidth="1.6"
-        strokeOpacity="0.45"
+        strokeWidth="1.8"
+        strokeOpacity="0.5"
         fill="none"
+        strokeLinecap="round"
       />
+      {/* lateral veins */}
+      <g stroke="var(--ivory)" strokeOpacity="0.28" strokeWidth="1.1" fill="none">
+        <path d="M26 -1C36 -14 50 -24 66 -29" />
+        <path d="M52 -5C62 -18 78 -27 96 -31" />
+        <path d="M80 -8C90 -20 106 -27 122 -30" />
+        <path d="M26 -1C34 8 48 18 62 22" />
+        <path d="M54 -5C62 6 76 15 92 18" />
+        <path d="M82 -8C90 2 104 9 118 11" />
+      </g>
     </g>
   );
 }
@@ -161,23 +181,39 @@ function Branch({ className }: { className?: string }) {
   return (
     <svg
       aria-hidden
-      viewBox="0 0 320 620"
+      viewBox="0 0 340 620"
       className={cn("pointer-events-none absolute text-leaf", className)}
     >
+      <defs>
+        <linearGradient id="leafFill" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor="var(--sage-deep)" />
+          <stop offset="55%" stopColor="var(--leaf)" />
+          <stop offset="100%" stopColor="var(--leaf-deep)" />
+        </linearGradient>
+      </defs>
+      {/* main stem */}
       <path
-        d="M20 0C60 140 90 300 96 610"
-        stroke="currentColor"
-        strokeWidth="3"
+        d="M18 -10C58 130 92 300 100 620"
+        stroke="var(--leaf-deep)"
+        strokeWidth="4"
         fill="none"
-        opacity="0.5"
+        opacity="0.7"
+        strokeLinecap="round"
       />
-      <Leaf x={40} y={70} rotate={-18} scale={0.85} opacity={0.85} />
-      <Leaf x={44} y={70} rotate={196} scale={0.6} opacity={0.6} />
-      <Leaf x={58} y={200} rotate={-4} scale={1} opacity={0.8} />
-      <Leaf x={62} y={210} rotate={182} scale={0.55} opacity={0.5} />
-      <Leaf x={78} y={340} rotate={14} scale={0.9} opacity={0.75} />
-      <Leaf x={86} y={470} rotate={-10} scale={0.7} opacity={0.6} />
-      <Leaf x={92} y={560} rotate={22} scale={0.55} opacity={0.5} />
+      {/* petioles */}
+      <g stroke="var(--leaf-deep)" strokeWidth="2.4" fill="none" opacity="0.55">
+        <path d="M42 74C58 62 74 56 92 54" />
+        <path d="M60 204C74 198 90 196 108 198" />
+        <path d="M80 344C96 344 112 348 128 356" />
+        <path d="M88 474C102 470 116 470 130 474" />
+      </g>
+      <Leaf x={40} y={74} rotate={-24} scale={0.8} opacity={0.9} />
+      <Leaf x={44} y={78} rotate={202} scale={0.52} opacity={0.55} />
+      <Leaf x={58} y={204} rotate={-8} scale={0.95} opacity={0.85} />
+      <Leaf x={62} y={212} rotate={186} scale={0.5} opacity={0.5} />
+      <Leaf x={78} y={344} rotate={18} scale={0.88} opacity={0.8} />
+      <Leaf x={86} y={474} rotate={-14} scale={0.66} opacity={0.7} />
+      <Leaf x={94} y={566} rotate={28} scale={0.5} opacity={0.6} />
     </svg>
   );
 }
@@ -190,10 +226,15 @@ function Branch({ className }: { className?: string }) {
 export function LeafEdge({ className }: { className?: string }) {
   return (
     <div aria-hidden className={cn("pointer-events-none absolute inset-0", className)}>
-      <Branch className="-left-24 top-[-6%] h-[70%] opacity-[0.16] blur-[3px] sm:-left-16" />
-      <Branch className="-left-10 top-[8%] h-[42%] opacity-[0.10] blur-[1px]" />
-      <Branch className="-right-24 bottom-[-6%] h-[70%] -scale-x-100 opacity-[0.16] blur-[3px] sm:-right-16" />
-      <Branch className="-right-8 bottom-[6%] h-[38%] -scale-x-100 opacity-[0.10] blur-[1px]" />
+      {/* far plane — soft, out of focus */}
+      <Branch className="-left-28 top-[-10%] h-[86%] opacity-[0.22] blur-[6px] sm:-left-20" />
+      <Branch className="-right-28 bottom-[-10%] h-[86%] -scale-x-100 opacity-[0.22] blur-[6px] sm:-right-20" />
+      {/* mid plane */}
+      <Branch className="-left-16 top-[4%] h-[58%] opacity-[0.3] blur-[2px]" />
+      <Branch className="-right-14 bottom-[2%] h-[54%] -scale-x-100 opacity-[0.3] blur-[2px]" />
+      {/* near plane — crisp foliage catching the light */}
+      <Branch className="-left-6 top-[16%] h-[34%] rotate-[8deg] opacity-[0.42] drop-shadow-[0_18px_24px_rgba(14,63,36,0.18)]" />
+      <Branch className="-right-4 bottom-[14%] h-[30%] -rotate-[8deg] -scale-x-100 opacity-[0.42] drop-shadow-[0_18px_24px_rgba(14,63,36,0.18)]" />
     </div>
   );
 }
