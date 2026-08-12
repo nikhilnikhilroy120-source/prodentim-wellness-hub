@@ -30,7 +30,7 @@ import {
   TESTIMONIALS,
   TRUST_ITEMS,
 } from "@/components/site/data";
-import { REFERENCES, SCIENTIFIC_REFERENCE_URL } from "@/config/site";
+import { REFERENCES } from "@/config/site";
 
 import heroBottles from "@/assets/three-bottle.png.asset.json";
 import bestOffer from "@/assets/best-offer.png.asset.json";
@@ -171,9 +171,7 @@ function Index() {
               supporting the everyday health of your teeth and gums.
             </p>
             <a
-              href={SCIENTIFIC_REFERENCE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#references"
               className="mt-7 inline-flex items-center gap-2 rounded-full border border-leaf/35 bg-cream px-5 py-2.5 text-xs font-semibold uppercase tracking-widest text-leaf transition-colors hover:bg-sage"
             >
               Reference link
@@ -635,7 +633,7 @@ function Index() {
         </Section>
 
         {/* 19. SCIENTIFIC REFERENCES */}
-        <Section tone="white">
+        <Section id="references" tone="white">
           <details className="mx-auto max-w-3xl surface-card rounded-3xl p-6 sm:p-8">
             <summary className="cursor-pointer list-none text-lg font-semibold text-charcoal">
               Scientific References
