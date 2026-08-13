@@ -3,6 +3,7 @@ import { Menu, X, Zap } from "lucide-react";
 import { useEffect, useState } from "react";
 import { NAV_LINKS } from "@/config/site";
 import { BuyButton } from "./ui";
+import { Logo } from "./Logo";
 import { cn } from "@/lib/utils";
 
 export function Header() {
@@ -33,13 +34,8 @@ export function Header() {
       )}
     >
       <div className="container-x grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 lg:flex lg:justify-between">
-        <Link to="/" className="flex min-w-0 items-center gap-2">
-          <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-leaf text-[0.7rem] font-bold text-primary-foreground">
-            Pd
-          </span>
-          <span className="truncate font-display text-xl tracking-tight text-charcoal">
-            ProDentim
-          </span>
+        <Link to="/" className="min-w-0">
+          <Logo />
         </Link>
 
         <nav className="hidden items-center gap-8 lg:flex" aria-label="Main">
@@ -55,7 +51,7 @@ export function Header() {
         </nav>
 
         <div className="hidden lg:block">
-          <BuyButton className="px-6 text-[0.7rem]">Get ProDentim</BuyButton>
+          <BuyButton className="px-6 text-[0.7rem]">Buy Now</BuyButton>
         </div>
 
         <button
@@ -85,7 +81,7 @@ export function Header() {
                 {l.label}
               </a>
             ))}
-            <BuyButton className="mt-2 w-full">Get ProDentim</BuyButton>
+            <BuyButton className="mt-2 w-full">Buy Now</BuyButton>
           </nav>
         </div>
       )}
