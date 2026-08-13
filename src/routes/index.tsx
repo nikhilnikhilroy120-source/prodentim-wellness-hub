@@ -20,9 +20,11 @@ import {
   LeafEdge,
   Reveal,
   Section,
+  BuyImageLink,
+  StickyCtaBar,
 } from "@/components/site/ui";
+import { PaymentBadges } from "@/components/site/PaymentBadges";
 import { Faq } from "@/components/site/Faq";
-import { REVIEW_VIDEOS, VideoCard } from "@/components/site/ReviewVideos";
 import {
   BENEFITS,
   BLEND,
@@ -30,7 +32,7 @@ import {
   TESTIMONIALS,
   TRUST_ITEMS,
 } from "@/components/site/data";
-import { REFERENCES } from "@/config/site";
+import { BRAND, REFERENCES } from "@/config/site";
 
 import heroBottles from "@/assets/three-bottle.png.asset.json";
 import bestOffer from "@/assets/best-offer.png.asset.json";
@@ -42,9 +44,9 @@ import bonus2 from "@/assets/bonus2.png.asset.json";
 import bonus3 from "@/assets/bonus3.png.asset.json";
 import microbiome from "@/assets/microbiome.jpg";
 
-const TITLE = "ProDentim | Advanced Oral Probiotics for Everyday Oral Wellness";
+const TITLE = "ProDentim Oral Probiotics | NutriPulseLab";
 const DESCRIPTION =
-  "Discover ProDentim, an advanced oral probiotic formula featuring 3.5 billion probiotic strains and nutrients designed to support everyday oral wellness.";
+  "Discover ProDentim, an advanced oral probiotic formula featuring 3.5 billion probiotic strains and nutrients, reviewed by NutriPulseLab.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -101,7 +103,7 @@ function Index() {
                 backed by clinical research.
               </p>
               <div className="mt-9 flex flex-wrap gap-3">
-                <BuyButton>Get ProDentim</BuyButton>
+                <BuyButton>Buy Now — Claim Discount</BuyButton>
                 <AnchorButton to="/#ingredients">Explore The Formula</AnchorButton>
               </div>
 
@@ -245,7 +247,7 @@ function Index() {
                 </div>
               </div>
               <div className="mt-8">
-                <BuyButton>Get ProDentim</BuyButton>
+                <BuyButton>Buy Now</BuyButton>
               </div>
             </Reveal>
           </div>
@@ -481,21 +483,6 @@ function Index() {
           </div>
         </Section>
 
-        {/* 15. REVIEW VIDEOS */}
-        <Section tone="white">
-          <Reveal className="mx-auto max-w-2xl text-center">
-            <Eyebrow>Watch ProDentim Reviews</Eyebrow>
-            <h2 className="text-3xl text-charcoal sm:text-4xl">See It Before You Try It</h2>
-          </Reveal>
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {REVIEW_VIDEOS.map((v, i) => (
-              <Reveal key={v.title} delay={i * 90}>
-                <VideoCard {...v} />
-              </Reveal>
-            ))}
-          </div>
-        </Section>
-
         {/* 16. PRICING */}
         <Section id="pricing" tone="sage">
           <Reveal className="mx-auto max-w-3xl text-center">
@@ -512,6 +499,7 @@ function Index() {
                 <p className="eyebrow">Basic</p>
                 <h3 className="mt-2 text-2xl text-charcoal">2 Bottles</h3>
                 <p className="text-sm text-muted-foreground">60 Day Supply</p>
+                <BuyImageLink className="my-7">
                 <img
                   src={twoBottle.url}
                   alt="Two ProDentim bottles, 60 day supply"
@@ -519,15 +507,15 @@ function Index() {
                   height={420}
                   loading="lazy"
                   decoding="async"
-                  className="mx-auto my-7 h-48 w-full object-contain"
+                  className="mx-auto h-48 w-full object-contain"
                 />
+                </BuyImageLink>
                 <p className="text-sm text-muted-foreground line-through">$358</p>
                 <p className="font-display text-5xl text-charcoal">$158</p>
                 <p className="mt-2 text-xs text-muted-foreground">+ $9.99 Shipping</p>
                 <div className="mt-auto pt-7">
-                  <BuyButton tone="outline" className="w-full">
-                    Get Started
-                  </BuyButton>
+                  <BuyButton className="w-full">Buy Now</BuyButton>
+                  <PaymentBadges className="mt-4" />
                 </div>
               </article>
             </Reveal>
@@ -541,6 +529,7 @@ function Index() {
                 <p className="eyebrow mt-2">3 + 3 Bottles</p>
                 <h3 className="mt-2 text-2xl text-charcoal">180 Day Supply</h3>
                 <p className="text-sm text-muted-foreground">Includes 3 free bonuses</p>
+                <BuyImageLink className="my-6">
                 <img
                   src={bestOffer.url}
                   alt="Six ProDentim bottles with three free bonus e-books, 180 day supply"
@@ -548,8 +537,9 @@ function Index() {
                   height={753}
                   loading="lazy"
                   decoding="async"
-                  className="mx-auto my-6 h-56 w-full object-contain"
+                  className="mx-auto h-56 w-full object-contain"
                 />
+                </BuyImageLink>
                 <p className="text-sm text-muted-foreground line-through">$1074</p>
                 <p className="font-display text-6xl text-leaf">$294</p>
                 <p className="mt-2 text-xs font-semibold uppercase tracking-wider text-leaf">
@@ -559,7 +549,8 @@ function Index() {
                   *97% Of Customers Order 6 Bottles (Our Recommended Option)
                 </p>
                 <div className="mt-auto pt-7">
-                  <BuyButton className="w-full">Claim Best Value</BuyButton>
+                  <BuyButton className="w-full">Buy Now — Claim Best Value</BuyButton>
+                  <PaymentBadges className="mt-4" />
                 </div>
               </article>
             </Reveal>
@@ -570,6 +561,7 @@ function Index() {
                 <p className="eyebrow">Most Popular</p>
                 <h3 className="mt-2 text-2xl text-charcoal">2 + 1 Bottles</h3>
                 <p className="text-sm text-muted-foreground">90 Day Supply</p>
+                <BuyImageLink className="my-7">
                 <img
                   src={heroBottles.url}
                   alt="Three ProDentim bottles, 90 day supply"
@@ -577,17 +569,17 @@ function Index() {
                   height={950}
                   loading="lazy"
                   decoding="async"
-                  className="mx-auto my-7 h-48 w-full object-contain"
+                  className="mx-auto h-48 w-full object-contain"
                 />
+                </BuyImageLink>
                 <p className="text-sm text-muted-foreground line-through">$537</p>
                 <p className="font-display text-5xl text-charcoal">$207</p>
                 <p className="mt-2 text-xs font-semibold uppercase tracking-wider text-leaf">
                   Free Shipping
                 </p>
                 <div className="mt-auto pt-7">
-                  <BuyButton tone="outline" className="w-full">
-                    Get Started
-                  </BuyButton>
+                  <BuyButton className="w-full">Buy Now</BuyButton>
+                  <PaymentBadges className="mt-4" />
                 </div>
               </article>
             </Reveal>
@@ -640,7 +632,16 @@ function Index() {
             </summary>
             <ol className="mt-6 list-decimal space-y-2.5 pl-5 text-sm leading-relaxed text-muted-foreground">
               {REFERENCES.map((r) => (
-                <li key={r}>{r}</li>
+                <li key={r.url}>
+                  <a
+                    href={r.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-leaf underline underline-offset-4 hover:text-leaf-deep"
+                  >
+                    {r.text}
+                  </a>
+                </li>
               ))}
             </ol>
           </details>
@@ -690,6 +691,8 @@ function Index() {
         </section>
       </main>
       <Footer />
+      <StickyCtaBar />
+      <div aria-hidden className="h-20 lg:hidden" />
     </div>
   );
 }

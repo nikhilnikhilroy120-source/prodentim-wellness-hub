@@ -1,19 +1,19 @@
 import { Link } from "@tanstack/react-router";
-import { LEGAL_LINKS, NAV_LINKS } from "@/config/site";
+import { BRAND, LEGAL_LINKS, NAV_LINKS } from "@/config/site";
+import { Logo } from "./Logo";
+import { PaymentBadges } from "./PaymentBadges";
+import { Lock, ShieldCheck } from "lucide-react";
 
 export function Footer() {
   return (
     <footer className="relative overflow-hidden bg-gradient-to-b from-leaf to-leaf-deep text-primary-foreground">
       <div className="container-x grid gap-10 py-16 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
-          <Link to="/" className="flex items-center gap-2">
-            <span className="grid h-8 w-8 place-items-center rounded-full bg-primary-foreground/15 text-[0.7rem] font-bold text-primary-foreground ring-1 ring-primary-foreground/25">
-              Pd
-            </span>
-            <span className="font-display text-xl text-primary-foreground">ProDentim</span>
+          <Link to="/">
+            <Logo tone="light" />
           </Link>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-primary-foreground/75">
-            Advanced oral probiotics — a unique blend of 3.5 billion probiotic strains and
+            {BRAND.name} — advanced oral probiotics. A unique blend of 3.5 billion probiotic strains and
             nutrients designed to support the health of your teeth and gums.
           </p>
           <p className="mt-6 text-xs leading-relaxed text-primary-foreground/60">
@@ -56,13 +56,28 @@ export function Footer() {
       </div>
 
       <div className="border-t border-primary-foreground/15">
+        <div className="container-x flex flex-col items-center gap-5 py-7 sm:flex-row sm:justify-between">
+          <div className="rounded-2xl bg-primary-foreground/95 px-5 py-3">
+            <PaymentBadges label={false} />
+          </div>
+          <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-primary-foreground/75">
+            <li className="flex items-center gap-2">
+              <Lock size={14} /> SSL Secure Checkout
+            </li>
+            <li className="flex items-center gap-2">
+              <ShieldCheck size={14} /> 60-Day Money-Back Guarantee
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div className="border-t border-primary-foreground/15">
         <div className="container-x flex flex-col gap-3 py-6 text-xs leading-relaxed text-primary-foreground/60">
           <p>
             Statements on this website have not been evaluated by the Food and Drug
             Administration. Products are not intended to diagnose, treat, cure or prevent any
             disease.
           </p>
-          <p>© {new Date().getFullYear()} ProDentim affiliate resource. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} {BRAND.name} ({BRAND.domain}). All rights reserved.</p>
         </div>
       </div>
     </footer>

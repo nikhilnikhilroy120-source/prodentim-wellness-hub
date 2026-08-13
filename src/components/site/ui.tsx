@@ -288,3 +288,41 @@ export function Reveal({
     </div>
   );
 }
+/** Wraps a product visual so the whole image links to the affiliate checkout. */
+export function BuyImageLink({
+  children,
+  className,
+  label = "Order ProDentim now",
+}: {
+  children: ReactNode;
+  className?: string;
+  label?: string;
+}) {
+  return (
+    <a
+      href={PRODUCT_CHECKOUT_URL}
+      target="_blank"
+      rel="nofollow sponsored noopener"
+      aria-label={label}
+      className={cn("block transition-transform duration-300 hover:scale-[1.02]", className)}
+    >
+      {children}
+    </a>
+  );
+}
+
+/** Floating mobile-only checkout bar. */
+export function StickyCtaBar() {
+  return (
+    <div className="fixed inset-x-0 bottom-0 z-50 border-t border-leaf-deep/40 bg-gradient-to-b from-leaf to-leaf-deep p-3 shadow-[0_-14px_30px_-20px_rgba(0,0,0,0.7)] lg:hidden">
+      <a
+        href={PRODUCT_CHECKOUT_URL}
+        target="_blank"
+        rel="nofollow sponsored noopener"
+        className="flex min-h-12 w-full items-center justify-center rounded-full bg-gold px-5 text-center text-[0.72rem] font-bold uppercase tracking-wide text-charcoal shadow-lg"
+      >
+        Claim ProDentim Discount + Free Shipping
+      </a>
+    </div>
+  );
+}
