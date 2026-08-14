@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { X, Sparkles } from "lucide-react";
 import { PRODUCT_CHECKOUT_URL } from "@/config/site";
+import { supabase } from "@/integrations/supabase/client";
 
 const FLAG = "npl_lead_popup_seen";
 
@@ -12,6 +13,8 @@ export function LeadPopup() {
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [done, setDone] = useState(false);
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -94,8 +97,18 @@ export function LeadPopup() {
             </p>
             <form
               className="mt-5 space-y-3"
-              onSubmit={(e) => {
+              onSubmit={async (e) => {
                 e.preventDefault();
+                setError(null);
+                setSaving(true);
+                const { error: insertError } = await supabase
+                  .from("leads")
+                  .insert({ email: email.trim().toLowerCase(), source: "lead_popup" });
+                setSaving(false);
+                if (insertError) {
+                  setError("Something went wrong. Please try again.");
+                  return;
+                }
                 setDone(true);
               }}
             >
@@ -110,10 +123,16 @@ export function LeadPopup() {
               />
               <button
                 type="submit"
-                className="min-h-12 w-full rounded-full bg-gradient-to-b from-[oklch(0.46_0.1_150)] to-leaf px-6 text-[0.78rem] font-semibold uppercase tracking-wide text-primary-foreground transition-all hover:-translate-y-0.5"
+                disabled={saving}
+                className="min-h-12 w-full rounded-full bg-gradient-to-b from-[oklch(0.46_0.1_150)] to-leaf px-6 text-[0.78rem] font-semibold uppercase tracking-wide text-primary-foreground transition-all hover:-translate-y-0.5 disabled:opacity-60"
               >
-                Claim Discount
+                {saving ? "Saving…" : "Claim Discount"}
               </button>
+              {error ? (
+                <p className="text-xs text-destructive" role="alert">
+                  {error}
+                </p>
+              ) : null}
             </form>
             <button
               type="button"
