@@ -22,7 +22,7 @@ export function LegalPage({
           <LeafEdge />
           <div className="container-x relative py-14 sm:py-20">
             <Link to="/" className="text-sm font-medium text-leaf hover:underline">
-              ← Back to ProDentim
+              ← Back to home
             </Link>
             <h1 className="mt-4 text-4xl text-charcoal sm:text-5xl">{title}</h1>
             {intro && (
