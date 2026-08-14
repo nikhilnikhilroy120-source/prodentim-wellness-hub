@@ -21,7 +21,16 @@ export const Route = createFileRoute("/references")({
     >
       <ol className="list-decimal space-y-3 pl-5">
         {REFERENCES.map((r) => (
-          <li key={r}>{r}</li>
+          <li key={r.url}>
+            <a
+              href={r.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-leaf underline underline-offset-4 hover:text-sage-deep"
+            >
+              {r.text}
+            </a>
+          </li>
         ))}
       </ol>
     </LegalPage>
