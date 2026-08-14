@@ -30,7 +30,7 @@ export function BuyButton({
     <a
       href={PRODUCT_CHECKOUT_URL}
       target="_blank"
-      rel="nofollow sponsored noopener"
+      rel="nofollow sponsored noopener noreferrer"
       className={cn(base, tones[tone], className)}
     >
       {children}
@@ -302,7 +302,7 @@ export function BuyImageLink({
     <a
       href={PRODUCT_CHECKOUT_URL}
       target="_blank"
-      rel="nofollow sponsored noopener"
+      rel="nofollow sponsored noopener noreferrer"
       aria-label={label}
       className={cn("block transition-transform duration-300 hover:scale-[1.02]", className)}
     >
@@ -318,7 +318,7 @@ export function StickyCtaBar() {
       <a
         href={PRODUCT_CHECKOUT_URL}
         target="_blank"
-        rel="nofollow sponsored noopener"
+        rel="nofollow sponsored noopener noreferrer"
         className="flex min-h-12 w-full items-center justify-center rounded-full bg-gold px-5 text-center text-[0.72rem] font-bold uppercase tracking-wide text-charcoal shadow-lg"
       >
         Claim ProDentim Discount + Free Shipping
